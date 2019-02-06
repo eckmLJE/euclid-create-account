@@ -2,7 +2,20 @@ var stepOneCard = $("#basic-information-card");
 var stepTwoCard = $("#contact-information-card");
 var stepThreeCard = $("#extra-card");
 
-// Basic Checkout Validation
+// Password Validation
+var password = document.querySelector("#password-input");
+var passwordConfirm = document.querySelector("#password-confirm-input");
+
+password.addEventListener("change", validatePassword);
+passwordConfirm.addEventListener("keyup", validatePassword);
+
+function validatePassword() {
+  password.value !== passwordConfirm.value
+    ? passwordConfirm.setCustomValidity("Passwords Must Match")
+    : passwordConfirm.setCustomValidity("");
+}
+
+// Form Validation
 
 var stepOneForm = $("#form-basic");
 var stepTwoForm = $("#form-payment");

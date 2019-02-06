@@ -30,6 +30,7 @@
   </head>
   <body>
     <div class="container">
+      <!-- h1 Title Row -->
       <div class="row m-2 mt-4">
         <div class="col-12">
           <div class="mx-auto" style="max-width: 500px">
@@ -44,9 +45,11 @@
           </div>
         </div>
       </div>
+      <!-- Spacer Row -->
       <div class="row mt-3"></div>
       <div class="row mt-5">
         <div class="col-12">
+          <!-- Create Account Card -->
           <div id="create-account-card" class="card mx-auto">
             <!-- Header Stepper -->
             <div class="row">
@@ -85,7 +88,58 @@
               <!-- Basic Form -->
               <form id="form-basic" class="needs-validation" novalidate>
                 <div class="form-row">
-                  <div class="col">
+                  <div class="col-12">
+                    <div class="md-form">
+                      <label for="username">Username</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="username"
+                        name="username"
+                        required
+                      />
+                      <div class="invalid-feedback">Username is Required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="md-form">
+                      <label for="password-input">Password</label>
+                      <input
+                        type="password"
+                        class="form-control form-control-sm"
+                        id="password-input"
+                        name="password-input"
+                        required
+                      />
+                      <small
+                        id="password-help-block"
+                        class="form-text text-muted ml-1"
+                      >
+                        At least 8 characters and 1 digit
+                      </small>
+                      <div class="invalid-feedback">Password is Required</div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="md-form">
+                      <label for="password-confirm-input"
+                        >Confirm Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control form-control-sm"
+                        id="password-confirm-input"
+                        name="password-confirm-input"
+                        required
+                      />
+                      <div class="invalid-feedback">Password must match</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-md-6">
                     <div class="md-form">
                       <label for="first-name">First Name</label>
                       <input
@@ -100,7 +154,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-12 col-md-6">
                     <div class="md-form">
                       <label for="last-name">Last Name</label>
                       <input
@@ -116,6 +170,29 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="row mt-3">
+                  <div class="col-6 d-flex justify-content-center"></div>
+                  <div class="col-6 d-flex justify-content-center">
+                    <button
+                      id="billing-continue-button"
+                      type="submit"
+                      class="btn btn-info p-2 px-sm-4"
+                      style="min-width: 80%"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- Payment Information Card Body -->
+            <div
+              id="contact-information-card"
+              class="card-body"
+              style="display:none"
+            >
+              <form id="form-payment" class="needs-validation" novalidate>
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -197,28 +274,6 @@
                     <div class="invalid-feedback">ZIP is Required</div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-6 d-flex justify-content-center"></div>
-                  <div class="col-6 d-flex justify-content-center">
-                    <button
-                      id="billing-continue-button"
-                      type="submit"
-                      class="btn btn-info p-2 px-sm-4"
-                      style="min-width: 80%"
-                    >
-                      Continue
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- Payment Information Card Body -->
-            <div
-              id="contact-information-card"
-              class="card-body"
-              style="display:none"
-            >
-              <form id="form-payment" class="needs-validation" novalidate>
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -314,7 +369,7 @@
                       style="min-width: 80%"
                       required
                     >
-                      Back to Billing
+                      Back to Basic
                     </button>
                   </div>
                   <div class="col-6 d-flex justify-content-center">
