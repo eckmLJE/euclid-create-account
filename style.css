@@ -1,0 +1,64 @@
+body {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-family: "Roboto", sans-serif;
+}
+
+#create-account-card {
+  max-width: 500px;
+}
+
+input {
+  padding-left: 5px !important;
+}
+
+input:focus {
+  border-bottom-color: #33b5e5 !important;
+}
+
+input::placeholder {
+  padding-left: 5px !important;
+  color: rgb(145, 145, 145) !important;
+}
+
+label {
+  font-size: 1rem !important;
+}
+
+#header-stepper {
+  background-color: #33b5e5;
+  width: 95%;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: -45px;
+}
+
+#header-stepper h6 {
+  color: white;
+  margin: 5px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: default;
+}
+
+#header-stepper h6.current-step {
+  background-color: #2e9ac2;
+}
+
+#confirmation-card p {
+  margin: 0;
+  padding: 0;
+}
+
+#size-sup {
+  color: #2e9ac2;
+  font-weight: normal;
+}
+
+.confirm-details-box {
+  border-radius: 6px;
+  background-color: #33b6e515 !important;
+  max-width: 450px;
+  margin: auto;
+}
