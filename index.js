@@ -1,8 +1,4 @@
-var stepOneCard = $("#basic-information-card");
-var stepTwoCard = $("#contact-information-card");
-var stepThreeCard = $("#extra-card");
-
-// Password Validation
+// Password Match Validation
 var password = document.querySelector("#password-input");
 var passwordConfirm = document.querySelector("#password-confirm-input");
 
@@ -37,7 +33,11 @@ function validateStepTwoInfoSubmit(e) {
     : e.currentTarget.classList.add("was-validated");
 }
 
-// Checkout Navigation
+// Navigation
+
+var stepOneCard = $("#basic-information-card");
+var stepTwoCard = $("#contact-information-card");
+var stepThreeCard = $("#extra-card");
 
 $("#step-two-back-button").click(stepTwoBackToThree); // No validation for navigating backwards
 $("#step-three-back-button").click(stepThreeBackToOne); // No validation for navigating backwards
@@ -131,10 +131,10 @@ function cleaveSetCvvAndCardPattern(type) {
   $(ccSelector).addClass("text-info");
 }
 
-// Initialization
+// Initialize
 
 function initialize() {
-  $("#first-name").focus();
+  $("#username-input").focus();
 }
 
 $(initialize);
