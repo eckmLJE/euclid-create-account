@@ -90,11 +90,11 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="username">Username</label>
+                      <label for="username-input">Username</label>
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        id="username"
+                        id="username-input"
                         name="username"
                         required
                       />
@@ -110,7 +110,7 @@
                         type="password"
                         class="form-control form-control-sm"
                         id="password-input"
-                        name="password-input"
+                        name="password"
                         minlength="8"
                         required
                       />
@@ -132,7 +132,7 @@
                         type="password"
                         class="form-control form-control-sm"
                         id="password-confirm-input"
-                        name="password-confirm-input"
+                        name="passwordConfirm"
                         required
                       />
                       <div class="invalid-feedback">Password must match</div>
@@ -168,6 +168,54 @@
                       />
                       <div class="invalid-feedback">
                         Last Name is Required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12">
+                    <div class="md-form">
+                      <label for="email-input">Email Address</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="email-input"
+                        name="email"
+                        required
+                      />
+                      <div class="invalid-feedback">Email is Required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="md-form">
+                      <label for="job-title-input"
+                        >Job Title<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="job-title-input"
+                        name="firstName"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="md-form">
+                      <label for="company-name">Company Name</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="company-name"
+                        name="companyName"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Company Name is Required
                       </div>
                     </div>
                   </div>
