@@ -111,13 +111,14 @@
                         class="form-control form-control-sm"
                         id="password-input"
                         name="password-input"
+                        minlength="8"
                         required
                       />
                       <small
                         id="password-help-block"
                         class="form-text text-muted ml-1"
                       >
-                        At least 8 characters and 1 digit
+                        At least 8 characters
                       </small>
                       <div class="invalid-feedback">Password is Required</div>
                     </div>
@@ -135,6 +136,7 @@
                         required
                       />
                       <div class="invalid-feedback">Password must match</div>
+                      <div class="valid-feedback">Looks good!</div>
                     </div>
                   </div>
                 </div>
