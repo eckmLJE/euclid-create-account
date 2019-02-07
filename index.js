@@ -1,17 +1,26 @@
-// Navigation
+// Selectors
 
 var stepOneCard = $("#basic-information-card");
 var stepTwoCard = $("#contact-information-card");
 var stepThreeCard = $("#additional-information-card");
 var stepFourCard = $("confirmation-card");
 
-$("#step-two-back-button").click(stepTwoBack); // No validation for navigating backwards
-$("#step-three-back-button").click(stepThreeBack); // No validation for navigating backwards
-
 var stepperHeaderStepOne = $("#stepper-basic-header");
 var stepperHeaderStepTwo = $("#stepper-contact-header");
 var stepperHeaderStepThree = $("#stepper-additional-header");
 var stepperHeaderStepFour = $("#stepper-confirm-header");
+
+var stepOneForm = $("#form-basic");
+var stepTwoForm = $("#form-contact");
+var stepThreeForm = $("#form-additional");
+
+var passwordInput = document.querySelector("#password-input");
+var passwordConfirmInput = document.querySelector("#password-confirm-input");
+
+// Navigation
+
+$("#step-two-back-button").click(stepTwoBack); // No validation for navigating backwards
+$("#step-three-back-button").click(stepThreeBack); // No validation for navigating backwards
 
 function stepOneContinue() {
   stepOneCard.hide();
@@ -56,10 +65,6 @@ function stepThreeBack() {
 
 // Form Validation
 
-var stepOneForm = $("#form-basic");
-var stepTwoForm = $("#form-additional");
-var stepThreeForm = $("form-additional");
-
 stepOneForm.on("submit", validateStepOneInfoSubmit);
 stepTwoForm.on("submit", validateStepTwoInfoSubmit);
 stepThreeForm.on("submit", validateStepThreeInfoSubmit);
@@ -78,15 +83,20 @@ function validateStepTwoInfoSubmit(e) {
     : e.currentTarget.classList.add("was-validated");
 }
 
-// Password Match Validation
-var password = document.querySelector("#password-input");
-var passwordConfirm = document.querySelector("#password-confirm-input");
+function validateStepThreeInfoSubmit(e) {
+  e.preventDefault();
+  e.currentTarget.checkValidity()
+    ? stepThreeContinue()
+    : e.currentTarget.classList.add("was-validated");
+}
 
-password.addEventListener("change", validatePassword);
-passwordConfirm.addEventListener("keyup", validatePassword);
+// Password Match Validation
+
+passwordInput.addEventListener("change", validatePassword);
+passwordConfirmInput.addEventListener("keyup", validatePassword);
 
 function validatePassword() {
-  password.value !== passwordConfirm.value
+  passwordInput.value !== passwordConfirmInput.value
     ? passwordConfirm.setCustomValidity("Passwords Must Match")
     : passwordConfirm.setCustomValidity("");
 }
@@ -99,11 +109,14 @@ function loadFormData() {
     stepTwoData: {},
     stepThreeData: {}
   };
-  billingForm.serializeArray().forEach(function(ele) {
-    data.billingData[ele.name] = ele.value;
+  stepOneForm.serializeArray().forEach(function(ele) {
+    data.stepOneData[ele.name] = ele.value;
   });
-  paymentForm.serializeArray().forEach(function(ele) {
-    data.paymentData[ele.name] = ele.value;
+  stepTwoForm.serializeArray().forEach(function(ele) {
+    data.stepTwoData[ele.name] = ele.value;
+  });
+  stepThreeForm.serializeArray().forEach(function(ele) {
+    data.stepThreeData[ele.name] = ele.value;
   });
   return data;
 }

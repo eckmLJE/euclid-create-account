@@ -166,7 +166,7 @@
                       </datalist>
                     </div>
                   </div>
-                  <div class="col-12 col-md-5">
+                  <div class="col-12 col-md-4">
                     <div class="md-form">
                       <label for="first-name">First Name</label>
                       <input
@@ -181,7 +181,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-5">
+                  <div class="col-12 col-md-6">
                     <div class="md-form">
                       <label for="last-name">Last Name</label>
                       <input
@@ -235,10 +235,15 @@
                       <input
                         type="text"
                         class="form-control form-control-sm"
+                        list="company-name-list"
                         id="company-name"
                         name="companyName"
                         required
                       />
+                      <datalist for="company-name" id="company-name-list">
+                        <option>Euclid Technology</option>
+                        <option>Member Connection</option>
+                      </datalist>
                       <div class="invalid-feedback">
                         Company Name is Required
                       </div>
@@ -398,7 +403,6 @@
                         class="form-control form-control-sm"
                         id="work-phone-input"
                         name="workPhone"
-                        required
                       />
                       <div class="invalid-feedback">
                         Work Phone is Required
@@ -418,7 +422,6 @@
                         class="form-control form-control-sm"
                         id="work-phone-ext-input"
                         name="workPhoneExt"
-                        required
                       />
                     </div>
                   </div>
@@ -454,13 +457,18 @@
             <div
               id="additional-information-card"
               class="card-body"
-              style="display:none"
+              style="display: none"
             >
               <form id="form-additional" class="needs-validation" novalidate>
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="home-phone-input">Home Phone</label>
+                      <label for="home-phone-input"
+                        >Home Phone<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="tel"
                         class="form-control form-control-sm"
@@ -473,7 +481,12 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="cell-phone-input">Cell Phone</label>
+                      <label for="cell-phone-input"
+                        >Cell Phone<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="tel"
                         class="form-control form-control-sm"
@@ -500,7 +513,12 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="alt-email-input">Alt. Email</label>
+                      <label for="alt-email-input"
+                        >Alt. Email<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="email"
                         class="form-control form-control-sm"
@@ -513,7 +531,12 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="website-input">Website</label>
+                      <label for="website-input"
+                        >Website<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="text"
                         class="form-control form-control-sm"
