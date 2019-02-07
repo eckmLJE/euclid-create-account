@@ -42,6 +42,17 @@ label {
   cursor: default;
 }
 
+@media (max-width: 575px) {
+  #header-stepper {
+    margin-top: -35px;
+  }
+  #header-stepper h6 {
+    font-size: 14px;
+    margin: 0px;
+    padding: 10px 8px;
+  }
+}
+
 #header-stepper h6.current-step {
   background-color: #2e9ac2;
 }

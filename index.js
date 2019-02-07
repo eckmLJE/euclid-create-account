@@ -1,3 +1,83 @@
+// Navigation
+
+var stepOneCard = $("#basic-information-card");
+var stepTwoCard = $("#contact-information-card");
+var stepThreeCard = $("#additional-information-card");
+var stepFourCard = $("confirmation-card");
+
+$("#step-two-back-button").click(stepTwoBack); // No validation for navigating backwards
+$("#step-three-back-button").click(stepThreeBack); // No validation for navigating backwards
+
+var stepperHeaderStepOne = $("#stepper-basic-header");
+var stepperHeaderStepTwo = $("#stepper-contact-header");
+var stepperHeaderStepThree = $("#stepper-additional-header");
+var stepperHeaderStepFour = $("#stepper-confirm-header");
+
+function stepOneContinue() {
+  stepOneCard.hide();
+  stepperHeaderStepOne.toggleClass("current-step");
+  stepperHeaderStepTwo.toggleClass("current-step");
+  stepTwoCard.show();
+  $("address-type-input").focus();
+}
+
+function stepTwoContinue() {
+  stepTwoCard.hide();
+  stepperHeaderStepTwo.toggleClass("current-step");
+  stepperHeaderStepThree.toggleClass("current-step");
+  stepThreeCard.show();
+  $("#home-phone-input").focus();
+}
+
+function stepThreeContinue() {
+  var formData = loadFormData();
+  appendFormData(formData);
+  stepThreeCard.hide();
+  stepperHeaderStepThree.toggleClass("current-step");
+  stepperHeaderStepFour.toggleClass("current-step");
+  stepFourCard.show();
+}
+
+function stepTwoBack() {
+  stepTwoCard.hide();
+  stepperHeaderStepOne.toggleClass("current-step");
+  stepperHeaderStepTwo.toggleClass("current-step");
+  stepOneCard.show();
+  $("#username-input").focus();
+}
+
+function stepThreeBack() {
+  stepThreeCard.hide();
+  stepperHeaderStepThree.toggleClass("current-step");
+  stepperHeaderStepOne.toggleClass("current-step");
+  stepOneCard.show();
+  $("#first-name").focus();
+}
+
+// Form Validation
+
+var stepOneForm = $("#form-basic");
+var stepTwoForm = $("#form-additional");
+var stepThreeForm = $("form-additional");
+
+stepOneForm.on("submit", validateStepOneInfoSubmit);
+stepTwoForm.on("submit", validateStepTwoInfoSubmit);
+stepThreeForm.on("submit", validateStepThreeInfoSubmit);
+
+function validateStepOneInfoSubmit(e) {
+  e.preventDefault();
+  e.currentTarget.checkValidity()
+    ? stepOneContinue()
+    : e.currentTarget.classList.add("was-validated");
+}
+
+function validateStepTwoInfoSubmit(e) {
+  e.preventDefault();
+  e.currentTarget.checkValidity()
+    ? stepTwoContinue()
+    : e.currentTarget.classList.add("was-validated");
+}
+
 // Password Match Validation
 var password = document.querySelector("#password-input");
 var passwordConfirm = document.querySelector("#password-confirm-input");
@@ -11,80 +91,13 @@ function validatePassword() {
     : passwordConfirm.setCustomValidity("");
 }
 
-// Form Validation
-
-var stepOneForm = $("#form-basic");
-var stepTwoForm = $("#form-payment");
-
-stepOneForm.on("submit", validateStepOneInfoSubmit);
-stepTwoForm.on("submit", validateStepTwoInfoSubmit);
-
-function validateStepOneInfoSubmit(e) {
-  e.preventDefault();
-  e.currentTarget.checkValidity()
-    ? stepOneToTwo()
-    : e.currentTarget.classList.add("was-validated");
-}
-
-function validateStepTwoInfoSubmit(e) {
-  e.preventDefault();
-  e.currentTarget.checkValidity()
-    ? stepTwoToThree()
-    : e.currentTarget.classList.add("was-validated");
-}
-
-// Navigation
-
-var stepOneCard = $("#basic-information-card");
-var stepTwoCard = $("#contact-information-card");
-var stepThreeCard = $("#additional-card");
-
-$("#step-two-back-button").click(stepTwoBackToThree); // No validation for navigating backwards
-$("#step-three-back-button").click(stepThreeBackToOne); // No validation for navigating backwards
-
-var stepperHeaderStepOne = $("#stepper-basic-header");
-var stepperHeaderStepTwo = $("#stepper-contact-header");
-var stepperHeaderStepThree = $("#stepper-additional-header");
-
-function stepOneToTwo() {
-  stepOneCard.hide();
-  stepperHeaderStepOne.toggleClass("current-step");
-  stepperHeaderStepTwo.toggleClass("current-step");
-  stepTwoCard.show();
-  $("#card-name").focus();
-}
-
-function stepTwoBackToThree() {
-  stepTwoCard.hide();
-  stepperHeaderStepOne.toggleClass("current-step");
-  stepperHeaderStepTwo.toggleClass("current-step");
-  stepOneCard.show();
-  $("#first-name").focus();
-}
-
-function stepTwoToThree() {
-  var formData = loadFormData();
-  appendFormData(formData);
-  stepTwoCard.hide();
-  stepperHeaderStepTwo.toggleClass("current-step");
-  stepperHeaderStepThree.toggleClass("current-step");
-  stepThreeCard.show();
-}
-
-function stepThreeBackToOne() {
-  stepThreeCard.hide();
-  stepperHeaderStepThree.toggleClass("current-step");
-  stepperHeaderStepOne.toggleClass("current-step");
-  stepOneCard.show();
-  $("#first-name").focus();
-}
-
 // Load and Fill Form Data
 
 function loadFormData() {
   var data = {
-    billingData: {},
-    paymentData: {}
+    stepOneData: {},
+    stepTwoData: {},
+    stepThreeData: {}
   };
   billingForm.serializeArray().forEach(function(ele) {
     data.billingData[ele.name] = ele.value;
