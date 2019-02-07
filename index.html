@@ -93,6 +93,11 @@
             <!-- Basic Information Card Body-->
             <div id="basic-information-card" class="card-body">
               <!-- Basic Form -->
+              <span class="ml-1"
+                ><small
+                  >All fields required unless marked otherwise.</small
+                ></span
+              >
               <form
                 id="form-basic"
                 class="needs-validation"
@@ -470,7 +475,12 @@
               class="card-body"
               style="display: none"
             >
-              <form id="form-additional" class="needs-validation" autocomplete="on" novalidate>
+              <form
+                id="form-additional"
+                class="needs-validation"
+                autocomplete="on"
+                novalidate
+              >
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -545,7 +555,7 @@
                 </div>
                 <div class="form-row">
                   <div class="col-12">
-                    <div class="md-form">
+                    <div class="md-form input-group">
                       <label for="website-input"
                         >Website<span
                           style="font-size: 0.8rem; margin-left: 5px"
@@ -558,6 +568,13 @@
                         id="website-input"
                         name="website"
                       />
+                      <div class="input-group-prepend">
+                        <span
+                          class="input-group-text md-addon"
+                          id="website-prepend"
+                          >https://</span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
