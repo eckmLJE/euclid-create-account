@@ -3,7 +3,7 @@
 var stepOneCard = $("#basic-information-card");
 var stepTwoCard = $("#contact-information-card");
 var stepThreeCard = $("#additional-information-card");
-var stepFourCard = $("confirmation-card");
+var stepFourCard = $("#confirmation-card");
 
 var stepperHeaderStepOne = $("#stepper-basic-header");
 var stepperHeaderStepTwo = $("#stepper-contact-header");
@@ -21,6 +21,7 @@ var passwordConfirmInput = document.querySelector("#password-confirm-input");
 
 $("#step-two-back-button").click(stepTwoBack); // No validation for navigating backwards
 $("#step-three-back-button").click(stepThreeBack); // No validation for navigating backwards
+$("#step-four-back-button").click(stepFourBack); // No validation for navigating backwards
 
 function stepOneContinue() {
   stepOneCard.hide();
@@ -58,9 +59,17 @@ function stepTwoBack() {
 function stepThreeBack() {
   stepThreeCard.hide();
   stepperHeaderStepThree.toggleClass("current-step");
+  stepperHeaderStepTwo.toggleClass("current-step");
+  stepTwoCard.show();
+  $("#first-name").focus();
+}
+
+function stepFourBack() {
+  stepFourCard.hide();
+  stepperHeaderStepFour.toggleclass("current-step");
   stepperHeaderStepOne.toggleClass("current-step");
   stepOneCard.show();
-  $("#first-name").focus();
+  $("#username-input").focus();
 }
 
 // Form Validation
@@ -97,66 +106,63 @@ passwordConfirmInput.addEventListener("keyup", validatePassword);
 
 function validatePassword() {
   passwordInput.value !== passwordConfirmInput.value
-    ? passwordConfirm.setCustomValidity("Passwords Must Match")
-    : passwordConfirm.setCustomValidity("");
+    ? passwordConfirmInput.setCustomValidity("Passwords Must Match")
+    : passwordConfirmInput.setCustomValidity("");
 }
 
 // Load and Fill Form Data
 
 function loadFormData() {
-  var data = {
-    stepOneData: {},
-    stepTwoData: {},
-    stepThreeData: {}
-  };
+  var data = {};
   stepOneForm.serializeArray().forEach(function(ele) {
-    data.stepOneData[ele.name] = ele.value;
+    data[ele.name] = ele.value;
   });
   stepTwoForm.serializeArray().forEach(function(ele) {
-    data.stepTwoData[ele.name] = ele.value;
+    data[ele.name] = ele.value;
   });
   stepThreeForm.serializeArray().forEach(function(ele) {
-    data.stepThreeData[ele.name] = ele.value;
+    data[ele.name] = ele.value;
   });
   return data;
 }
 
 function appendFormData(data) {
-  var billingDetails =
-    '<p class="mb-0">' +
-    data.billingData.firstName +
-    " " +
-    data.billingData.lastName +
-    '</p><p class="mb-0">' +
-    data.billingData.streetAddress +
-    '</p><p class="mb-0' +
-    (data.billingData.streetAddress2
-      ? '">' + data.billingData.streetAddress2
-      : ' d-none d-sm-block d-md-none d-lg-block">' + "<span>&nbsp</span>") +
-    '</p><p class="mb-0">' +
-    data.billingData.city +
-    ", " +
-    data.billingData.state +
-    '</p><p class="mb-0">' +
-    data.billingData.zip +
-    "</p>";
-  var cardNumber = data.paymentData.cardNumber;
-  var paymentDetails =
-    '<p class="mb-0">' +
-    data.paymentData.cardName +
-    '</p><p class="mb-0">' +
-    (cardNumber.length === 15
-      ? "**** ****** *" + cardNumber.slice(14)
-      : "**** **** **** " + cardNumber.slice(15)) +
-    '</p><p class="mb-0">' +
-    data.paymentData.expiration +
-    '</p><p class="mb-0">***</p>';
-  $("#billing-details-confirm")
-    .empty()
-    .append(billingDetails);
-  $("#payment-details-confirm")
-    .empty()
-    .append(paymentDetails);
+  console.log(data);
+  // var billingDetails =
+  //   '<p class="mb-0">' +
+  //   data.billingData.firstName +
+  //   " " +
+  //   data.billingData.lastName +
+  //   '</p><p class="mb-0">' +
+  //   data.billingData.streetAddress +
+  //   '</p><p class="mb-0' +
+  //   (data.billingData.streetAddress2
+  //     ? '">' + data.billingData.streetAddress2
+  //     : ' d-none d-sm-block d-md-none d-lg-block">' + "<span>&nbsp</span>") +
+  //   '</p><p class="mb-0">' +
+  //   data.billingData.city +
+  //   ", " +
+  //   data.billingData.state +
+  //   '</p><p class="mb-0">' +
+  //   data.billingData.zip +
+  //   "</p>";
+  // var cardNumber = data.paymentData.cardNumber;
+  // var paymentDetails =
+  //   '<p class="mb-0">' +
+  //   data.paymentData.cardName +
+  //   '</p><p class="mb-0">' +
+  //   (cardNumber.length === 15
+  //     ? "**** ****** *" + cardNumber.slice(14)
+  //     : "**** **** **** " + cardNumber.slice(15)) +
+  //   '</p><p class="mb-0">' +
+  //   data.paymentData.expiration +
+  //   '</p><p class="mb-0">***</p>';
+  // $("#billing-details-confirm")
+  //   .empty()
+  //   .append(billingDetails);
+  // $("#payment-details-confirm")
+  //   .empty()
+  //   .append(paymentDetails);
 }
 
 // Cleave input formatting

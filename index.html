@@ -93,7 +93,12 @@
             <!-- Basic Information Card Body-->
             <div id="basic-information-card" class="card-body">
               <!-- Basic Form -->
-              <form id="form-basic" class="needs-validation" novalidate>
+              <form
+                id="form-basic"
+                class="needs-validation"
+                autocomplete="on"
+                novalidate
+              >
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -103,6 +108,7 @@
                         class="form-control form-control-sm"
                         id="username-input"
                         name="username"
+                        autocomplete=""
                         required
                       />
                       <div class="invalid-feedback">Username is Required</div>
@@ -272,7 +278,12 @@
               class="card-body"
               style="display:none"
             >
-              <form id="form-contact" class="needs-validation" novalidate>
+              <form
+                id="form-contact"
+                class="needs-validation"
+                autocomplete="on"
+                novalidate
+              >
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -459,7 +470,7 @@
               class="card-body"
               style="display: none"
             >
-              <form id="form-additional" class="needs-validation" novalidate>
+              <form id="form-additional" class="needs-validation" autocomplete="on" novalidate>
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
@@ -499,7 +510,11 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="fax-input">Fax </label>
+                      <label for="fax-input"
+                        >Fax<span style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="tel"
                         class="form-control form-control-sm"
@@ -571,21 +586,46 @@
                 </div>
               </form>
             </div>
-            <!-- Additional Card Body-->
+            <!-- Confirmation Card Body-->
             <div id="confirmation-card" class="card-body" style="display:none">
               <div class="row px-4" style="margin-bottom: 1.7rem">
                 <div class="col-12 mt-2">
-                  <h6>Billing Details</h6>
+                  <h6>Basic Information</h6>
                   <div class="p-3 confirm-details-box">
                     <div class="row">
                       <div
                         class="d-none d-md-none d-sm-block d-lg-block col-sm-5 col-lg-5 text-right text-muted"
                       >
-                        <p>Full Name</p>
-                        <p>Street Address</p>
-                        <p>Street Address 2</p>
-                        <p>City, State</p>
+                        <p>Username</p>
+                        <p>Prefix</p>
+                        <p>First Name</p>
+                        <p>Last Name</p>
+                        <p>Email Address</p>
+                        <p>Job Title</p>
+                        <p>Company Name</p>
+                      </div>
+                      <div
+                        class="col-12 col-sm-7 col-md-12 col-lg-7"
+                        id="billing-details-confirm"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 mt-2">
+                  <h6>Contact Information</h6>
+                  <div class="p-3 confirm-details-box">
+                    <div class="row">
+                      <div
+                        class="d-none d-md-none d-sm-block d-lg-block col-sm-5 col-lg-5 text-right text-muted"
+                      >
+                        <p>Address Type</p>
+                        <p>Mailing Address</p>
+                        <p>Mailing Address 2</p>
+                        <p>City</p>
+                        <p>State</p>
                         <p>ZIP</p>
+                        <p>Country</p>
+                        <p>Work Phone</p>
                       </div>
                       <div
                         class="col-12 col-sm-7 col-md-12 col-lg-7"
@@ -595,16 +635,17 @@
                   </div>
                 </div>
                 <div class="col-12 mt-3">
-                  <h6>Payment Details</h6>
+                  <h6>Additional Information</h6>
                   <div class="p-3 confirm-details-box">
                     <div class="row">
                       <div
                         class="d-none d-sm-block d-md-none d-lg-block col-sm-5 col-lg-5 text-right text-muted"
                       >
-                        <p>Name on Card</p>
-                        <p>Card Number</p>
-                        <p>Expiration</p>
-                        <p>CVV</p>
+                        <p>Home Phone</p>
+                        <p>Cell Phone</p>
+                        <p>Fax</p>
+                        <p>Alt. Email</p>
+                        <p>Website</p>
                       </div>
                       <div
                         class="col-12 col-sm-7 col-md-12 col-lg-7"
