@@ -73,18 +73,22 @@
                       Contact
                     </h6>
                     <h6
-                      id="stepper-extra-header"
+                      id="stepper-additional-header"
                       class="card-title"
                       style="flex-grow: 1; flex-basis: 0;"
                     >
-                      Extra
+                      Additional
                     </h6>
                   </div>
                 </div>
               </div>
             </div>
             <!-- Basic Information Card Body-->
-            <div id="basic-information-card" class="card-body">
+            <div
+              id="basic-information-card"
+              class="card-body"
+              style="display:none"
+            >
               <!-- Basic Form -->
               <form id="form-basic" class="needs-validation" novalidate>
                 <div class="form-row">
@@ -254,26 +258,42 @@
                 </div>
               </form>
             </div>
-            <!-- Payment Information Card Body -->
-            <div
-              id="contact-information-card"
-              class="card-body"
-              style="display:none"
-            >
-              <form id="form-payment" class="needs-validation" novalidate>
+            <!-- Contact Information Card Body -->
+            <div id="contact-information-card" class="card-body">
+              <form id="form-contact" class="needs-validation" novalidate>
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="street-address">Street Address</label>
+                      <label for="address-type-input">Address Type</label>
+                      <input
+                        type="text"
+                        list="address-type-list"
+                        class="form-control form-control-sm"
+                        id="address-type-input"
+                        name="prefix"
+                      />
+                      <datalist id="address-type-list">
+                        <option name="work">Work</option>
+                        <option name="home">Home</option>
+                        <option name="shipping">Shipping</option>
+                        <option name="other">Other</option>
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12">
+                    <div class="md-form">
+                      <label for="mailing-address">Mailing Address</label>
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        id="street-address"
-                        name="streetAddress"
+                        id="mailing-address"
+                        name="mailingAddress"
                         required
                       />
                       <div class="invalid-feedback">
-                        Street Address is Required
+                        Mailing Address is Required
                       </div>
                     </div>
                   </div>
@@ -281,8 +301,8 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="street-address-2"
-                        >Street Address 2
+                      <label for="mailing-address-2"
+                        >Mailing Address 2
                         <span style="font-size: 0.8rem; margin-left: 5px"
                           >(Optional)</span
                         ></label
@@ -290,8 +310,8 @@
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        id="street-address-2"
-                        name="streetAddress2"
+                        id="mailing-address-2"
+                        name="mailingAddress2"
                       />
                     </div>
                   </div>
@@ -299,28 +319,28 @@
 
                 <div class="form-row">
                   <div class="md-form col-12 col-sm-6">
-                    <label for="city-input" style="margin-left: 5px"
+                    <label for="mailing-city-input" style="margin-left: 5px"
                       >City</label
                     >
                     <input
                       type="text"
                       class="form-control form-control-sm"
-                      id="city-input"
-                      name="city"
+                      id="mailing-city-input"
+                      name="mailing-city"
                       required
                     />
                     <div class="invalid-feedback">City is Required</div>
                   </div>
 
                   <div class="md-form col-12 col-sm-3">
-                    <label for="state-input" style="margin-left: 5px"
+                    <label for="mailing-state-input" style="margin-left: 5px"
                       >State</label
                     >
                     <input
                       type="text"
                       class="form-control form-control-sm"
-                      id="state-input"
-                      name="state"
+                      id="mailing-state-input"
+                      name="mailingState"
                       pattern="[A-Za-z]{2}"
                       maxlength="2"
                       required
@@ -329,13 +349,15 @@
                   </div>
 
                   <div class="md-form col-12 col-sm-3">
-                    <label for="zip-input" style="margin-left: 5px">ZIP</label>
+                    <label for="mailing-zip-input" style="margin-left: 5px"
+                      >ZIP</label
+                    >
                     <input
                       type="text"
                       class="form-control form-control-sm"
-                      id="zip-input"
+                      id="mailing-zip-input"
                       pattern="[0-9]{5}"
-                      name="zip"
+                      name="mailingZip"
                       maxlength="5"
                       required
                     />
@@ -345,89 +367,56 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="md-form">
-                      <label for="card-name">Name on Card</label>
+                      <label for="country"
+                        >Country<span
+                          style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        id="card-name"
-                        name="cardName"
-                        required
+                        id="country"
+                        name="country"
                       />
-                      <div class="invalid-feedback">Name is Required</div>
                     </div>
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col-12">
+                  <div class="col-12 col-md-7">
                     <div class="md-form">
-                      <label for="card-number">Card Number</label>
+                      <label for="work-phone">Work Phone</label>
                       <input
-                        type="text"
+                        type="tel"
                         class="form-control form-control-sm"
-                        id="card-number"
-                        name="cardNumber"
-                        pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}"
+                        id="work-phone"
+                        name="workPhone"
                         required
-                      /><span
-                        id="cc-icons-span"
-                        class="mr-0 mr-sm-3 text-muted"
-                        style="position: absolute; top: 0; right: 0; font-size: 1.35rem; margin-top: -25px"
-                      >
-                        <i
-                          id="cc-icon-visa"
-                          class="d-inline pr-1 fab fa-cc-visa"
-                        ></i>
-                        <i
-                          id="cc-icon-mastercard"
-                          class="d-inline pr-1 fab fa-cc-mastercard"
-                        ></i>
-                        <i
-                          id="cc-icon-amex"
-                          class="d-inline pr-1 fab fa-cc-amex"
-                        ></i>
-                        <i
-                          id="cc-icon-discover"
-                          class="d-inline fab fa-cc-discover"
-                        ></i>
-                      </span>
+                      />
                       <div class="invalid-feedback">
-                        CC Number is Required
+                        Work Phone is Required
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="form-row">
-                  <div class="md-form col-6">
-                    <label for="expiration" style="margin-left: 5px"
-                      >Expiration</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      id="expiration"
-                      name="expiration"
-                      placeholder="MM/YYYY"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Expiration is Required
+
+                  <div class="col-12 col-md-5">
+                    <div class="md-form">
+                      <label for="work-phone-ext"
+                        >Ext.<span style="font-size: 0.8rem; margin-left: 5px"
+                          >(Optional)</span
+                        ></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="work-phone-ext"
+                        name="workPhoneExt"
+                        required
+                      />
                     </div>
                   </div>
-                  <div class="md-form col-6">
-                    <label for="cvv-code" style="margin-left: 5px">CVV</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      id="cvv-code"
-                      name="cvvCode"
-                      pattern="[0-9]{4}"
-                      maxlength="3"
-                      placeholder="123"
-                      required
-                    />
-                    <div class="invalid-feedback">CVV is Required</div>
-                  </div>
                 </div>
+
                 <div class="row">
                   <div class="col-6 d-flex justify-content-center">
                     <button
@@ -454,8 +443,8 @@
                 </div>
               </form>
             </div>
-            <!-- Confirm and Place Order Card Body-->
-            <div id="extra-card" class="card-body" style="display:none">
+            <!-- Additional Card Body-->
+            <div id="additional-card" class="card-body" style="display:none">
               <div class="row px-4" style="margin-bottom: 1.7rem">
                 <div class="col-12 mt-2">
                   <h6>Billing Details</h6>
