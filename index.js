@@ -146,6 +146,21 @@ var cleaveMailingZIP = new Cleave("#mailing-zip-input", {
   delimiter: ""
 });
 
+var cleaveWorkPhone = new Cleave("#work-phone-input", {
+  phone: true,
+  phoneRegionCode: "US"
+});
+
+var cleaveHomePhone = new Cleave("#home-phone-input", {
+  phone: true,
+  phoneRegionCode: "US"
+});
+
+var cleaveCellPhone = new Cleave("#cell-phone-input", {
+  phone: true,
+  phoneRegionCode: "US"
+});
+
 // Initialize
 
 function initialize() {
