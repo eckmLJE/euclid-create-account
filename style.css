@@ -6,6 +6,65 @@ body {
 
 #create-account-card {
   max-width: 500px;
+  animation-name: slidein, fadein;
+  animation-duration: 0.6s, 0.5s;
+  animation-timing-function: ease-in-out, ease;
+}
+
+@keyframes slidein {
+  0% {
+    margin-top: -50px;
+  }
+
+  60% {
+    margin-top: 5px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+#header-stepper {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 90%;
+  background-color: #33b5e5;
+  border-radius: 4px;
+  margin-top: -45px;
+  animation-name: bounce;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0% {
+    margin-top: -45px;
+  }
+
+  30% {
+    margin-top: -35px;
+  }
+
+  100% {
+    margin-top: -45px;
+  }
+}
+
+#header-stepper h6 {
+  color: white;
+  margin: 5px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: default;
+}
+
+#header-stepper h6.current-step {
+  background-color: #2e9ac2;
 }
 
 input {
@@ -25,38 +84,6 @@ label {
   font-size: 1rem !important;
 }
 
-#header-stepper {
-  background-color: #33b5e5;
-  width: 95%;
-  margin: auto;
-  border-radius: 4px;
-  margin-top: -45px;
-}
-
-#header-stepper h6 {
-  color: white;
-  margin: 5px;
-  padding: 10px 10px;
-  border-radius: 4px;
-  text-align: center;
-  cursor: default;
-}
-
-@media (max-width: 575px) {
-  #header-stepper {
-    margin-top: -35px;
-  }
-  #header-stepper h6 {
-    font-size: 14px;
-    margin: 0px;
-    padding: 10px 8px;
-  }
-}
-
-#header-stepper h6.current-step {
-  background-color: #2e9ac2;
-}
-
 #confirmation-card p {
   margin: 0;
   padding: 0;
@@ -72,4 +99,29 @@ label {
   background-color: #33b6e515 !important;
   max-width: 450px;
   margin: auto;
+}
+
+/* Responsive */
+
+@media (max-width: 575px) {
+  #header-stepper {
+    margin-top: -35px;
+  }
+  #header-stepper h6 {
+    font-size: 14px;
+    margin: 0px;
+    padding: 10px 8px;
+  }
+}
+
+/* Keyframes */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
