@@ -107,12 +107,12 @@ function validateStepThreeInfoSubmit(e) {
 var passwordInput = document.querySelector("#password-input");
 var passwordConfirmInput = document.querySelector("#password-confirm-input");
 
-passwordInput.addEventListener("change", validatePassword);
-passwordConfirmInput.addEventListener("keyup", validatePassword);
+passwordInput.addEventListener("change", validatePasswordMatch);
+passwordConfirmInput.addEventListener("keyup", validatePasswordMatch);
 passwordInput.addEventListener("blur", passwordBlurValidity);
 passwordConfirmInput.addEventListener("blur", passwordMatchBlurValidity);
 
-function validatePassword() {
+function validatePasswordMatch() {
   passwordInput.value !== passwordConfirmInput.value
     ? passwordConfirmInput.setCustomValidity("Passwords Must Match")
     : passwordConfirmInput.setCustomValidity("");
