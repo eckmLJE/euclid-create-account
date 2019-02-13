@@ -196,7 +196,9 @@ function formatUserData(data) {
 }
 
 function generateP(text) {
-  return '<p class="mb-0">' + text + "</p>";
+  return text.trim().length
+    ? '<p class="mb-0">' + text + "</p>"
+    : '<p class="mb-0 text-muted"><small>' + "Left Blank" + "</small></p>";
 }
 
 function appendFormData(formattedData) {
