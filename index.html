@@ -133,13 +133,10 @@
                         minlength="8"
                         required
                       />
-                      <small
-                        id="password-help-block"
-                        class="form-text text-muted ml-1"
-                      >
-                        At least 8 characters
-                      </small>
-                      <div class="invalid-feedback">Password is Required</div>
+                      <div class="invalid-feedback">
+                        Password must have at least 8 characters
+                      </div>
+                      <div class="valid-feedback">Looks good!</div>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
@@ -155,7 +152,7 @@
                         required
                       />
                       <div class="invalid-feedback">Password must match</div>
-                      <div class="valid-feedback">Looks good!</div>
+                      <div class="valid-feedback">Matches!</div>
                     </div>
                   </div>
                 </div>
@@ -237,7 +234,7 @@
                         type="text"
                         class="form-control form-control-sm"
                         id="job-title-input"
-                        name="firstName"
+                        name="jobTitle"
                       />
                     </div>
                   </div>
@@ -299,7 +296,7 @@
                         list="address-type-list"
                         class="form-control form-control-sm"
                         id="address-type-input"
-                        name="prefix"
+                        name="addressType"
                       />
                       <datalist id="address-type-list">
                         <option name="work">Work</option>
@@ -609,7 +606,7 @@
                   <div class="p-3 confirm-details-box">
                     <div class="row">
                       <div
-                        class="d-none d-md-none d-sm-block d-lg-block col-sm-5 col-lg-5 text-right text-muted"
+                        class="d-none d-sm-block col-sm-5 col-lg-5 text-right text-muted"
                       >
                         <p>Username</p>
                         <p>Prefix</p>
@@ -621,7 +618,7 @@
                       </div>
                       <div
                         class="col-12 col-sm-7 col-md-12 col-lg-7"
-                        id="billing-details-confirm"
+                        id="basic-details-confirm"
                       ></div>
                     </div>
                   </div>
@@ -631,7 +628,7 @@
                   <div class="p-3 confirm-details-box">
                     <div class="row">
                       <div
-                        class="d-none d-md-none d-sm-block d-lg-block col-sm-5 col-lg-5 text-right text-muted"
+                        class="d-none d-sm-block col-sm-5 col-lg-5 text-right text-muted"
                       >
                         <p>Address Type</p>
                         <p>Mailing Address</p>
@@ -641,10 +638,11 @@
                         <p>ZIP</p>
                         <p>Country</p>
                         <p>Work Phone</p>
+                        <p>Work Phone Extension</p>
                       </div>
                       <div
                         class="col-12 col-sm-7 col-md-12 col-lg-7"
-                        id="billing-details-confirm"
+                        id="contact-details-confirm"
                       ></div>
                     </div>
                   </div>
@@ -654,7 +652,7 @@
                   <div class="p-3 confirm-details-box">
                     <div class="row">
                       <div
-                        class="d-none d-sm-block d-md-none d-lg-block col-sm-5 col-lg-5 text-right text-muted"
+                        class="d-none d-sm-block col-sm-5 col-lg-5 text-right text-muted"
                       >
                         <p>Home Phone</p>
                         <p>Cell Phone</p>
@@ -664,7 +662,7 @@
                       </div>
                       <div
                         class="col-12 col-sm-7 col-md-12 col-lg-7"
-                        id="payment-details-confirm"
+                        id="additional-details-confirm"
                       ></div>
                     </div>
                   </div>

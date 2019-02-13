@@ -1,27 +1,28 @@
-// Selectors
+// Card Selectors
 
 var stepOneCard = $("#basic-information-card");
 var stepTwoCard = $("#contact-information-card");
 var stepThreeCard = $("#additional-information-card");
 var stepFourCard = $("#confirmation-card");
 
+// Stepper Header Selectors
+
 var stepperHeaderStepOne = $("#stepper-basic-header");
 var stepperHeaderStepTwo = $("#stepper-contact-header");
 var stepperHeaderStepThree = $("#stepper-additional-header");
 var stepperHeaderStepFour = $("#stepper-confirm-header");
 
+// Form Selectors
+
 var stepOneForm = $("#form-basic");
 var stepTwoForm = $("#form-contact");
 var stepThreeForm = $("#form-additional");
-
-var passwordInput = document.querySelector("#password-input");
-var passwordConfirmInput = document.querySelector("#password-confirm-input");
 
 // Navigation
 
 $("#step-two-back-button").click(stepTwoBack); // No validation for navigating backwards
 $("#step-three-back-button").click(stepThreeBack); // No validation for navigating backwards
-$("#step-four-back-button").click(stepFourBack); // No validation for navigating backwards
+$("#step-four-back-button").click(stepFourBack); // (Back to Beginning) No validation for navigating backwards
 
 function stepOneContinue() {
   stepOneCard.hide();
@@ -40,8 +41,10 @@ function stepTwoContinue() {
 }
 
 function stepThreeContinue() {
+  // Loads form and continues to Confirmation
   var formData = loadFormData();
-  appendFormDataOld(formData);
+  var formattedUserData = formatUserData(formData);
+  appendFormData(formattedUserData);
   stepThreeCard.hide();
   stepperHeaderStepThree.toggleClass("current-step");
   stepperHeaderStepFour.toggleClass("current-step");
@@ -101,13 +104,28 @@ function validateStepThreeInfoSubmit(e) {
 
 // Password Match Validation
 
+var passwordInput = document.querySelector("#password-input");
+var passwordConfirmInput = document.querySelector("#password-confirm-input");
+
 passwordInput.addEventListener("change", validatePassword);
 passwordConfirmInput.addEventListener("keyup", validatePassword);
+passwordInput.addEventListener("blur", passwordBlueValidity);
+passwordConfirmInput.addEventListener("blur", passwordMatchBlurValidity);
 
 function validatePassword() {
   passwordInput.value !== passwordConfirmInput.value
     ? passwordConfirmInput.setCustomValidity("Passwords Must Match")
     : passwordConfirmInput.setCustomValidity("");
+}
+
+function passwordBlueValidity() {
+  passwordInput.checkValidity();
+  passwordInput.parentElement.classList.add("was-validated");
+}
+
+function passwordMatchBlurValidity() {
+  passwordConfirmInput.checkValidity();
+  passwordConfirmInput.parentElement.classList.add("was-validated");
 }
 
 // Load and Fill Form Data
@@ -123,54 +141,74 @@ function loadFormData() {
   stepThreeForm.serializeArray().forEach(function(ele) {
     data[ele.name] = ele.value;
   });
+  console.log(data);
   return data;
 }
 
-function generateParaM0(text) {
+function formatUserData(data) {
+  var basicOrder = [
+    "username",
+    "prefix",
+    "firstName",
+    "lastName",
+    "email",
+    "jobTitle",
+    "companyName"
+  ];
+  var contactOrder = [
+    "addressType",
+    "mailingAddress",
+    "mailingAddress2",
+    "mailingCity",
+    "mailingState",
+    "mailingZip",
+    "country",
+    "workPhone",
+    "workPhoneExt"
+  ];
+  var additionalOrder = [
+    "homePhone",
+    "cellPhone",
+    "fax",
+    "altEmail",
+    "website"
+  ];
+
+  var formattedUserData = {
+    basic: "",
+    contact: "",
+    additional: ""
+  };
+
+  basicOrder.forEach(function(datum) {
+    formattedUserData.basic += generateP(data[datum]);
+  });
+
+  contactOrder.forEach(function(datum) {
+    formattedUserData.contact += generateP(data[datum]);
+  });
+
+  additionalOrder.forEach(function(datum) {
+    formattedUserData.additional += generateP(data[datum]);
+  });
+  console.log(formattedUserData);
+  return formattedUserData;
+}
+
+function generateP(text) {
   return '<p class="mb-0">' + text + "</p>";
 }
 
-// function formatUserData(data) {
-//   var basicDetails = 
-// }
-
-function appendFormDataOld(data) {
-  console.log(data);
-  var billingDetails =
-    '<p class="mb-0">' +
-    data.billingData.firstName +
-    " " +
-    data.billingData.lastName +
-    '</p><p class="mb-0">' +
-    data.billingData.streetAddress +
-    '</p><p class="mb-0' +
-    (data.billingData.streetAddress2
-      ? '">' + data.billingData.streetAddress2
-      : ' d-none d-sm-block d-md-none d-lg-block">' + "<span>&nbsp</span>") +
-    '</p><p class="mb-0">' +
-    data.billingData.city +
-    ", " +
-    data.billingData.state +
-    '</p><p class="mb-0">' +
-    data.billingData.zip +
-    "</p>";
-  var cardNumber = data.paymentData.cardNumber;
-  var paymentDetails =
-    '<p class="mb-0">' +
-    data.paymentData.cardName +
-    '</p><p class="mb-0">' +
-    (cardNumber.length === 15
-      ? "**** ****** *" + cardNumber.slice(14)
-      : "**** **** **** " + cardNumber.slice(15)) +
-    '</p><p class="mb-0">' +
-    data.paymentData.expiration +
-    '</p><p class="mb-0">***</p>';
-  $("#billing-details-confirm")
+function appendFormData(formattedData) {
+  $("#basic-details-confirm")
     .empty()
-    .append(billingDetails);
-  $("#payment-details-confirm")
+    .append(formattedData.basic);
+  $("#contact-details-confirm")
     .empty()
-    .append(paymentDetails);
+    .append(formattedData.contact);
+  $("#additional-details-confirm")
+    .empty()
+    .append(formattedData.additional);
 }
 
 // Cleave input formatting
@@ -197,6 +235,11 @@ var cleaveHomePhone = new Cleave("#home-phone-input", {
 });
 
 var cleaveCellPhone = new Cleave("#cell-phone-input", {
+  phone: true,
+  phoneRegionCode: "US"
+});
+
+var cleaveFax = new Cleave("#fax-input", {
   phone: true,
   phoneRegionCode: "US"
 });
