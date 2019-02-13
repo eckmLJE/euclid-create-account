@@ -41,7 +41,7 @@ function stepTwoContinue() {
 
 function stepThreeContinue() {
   var formData = loadFormData();
-  appendFormData(formData);
+  appendFormDataOld(formData);
   stepThreeCard.hide();
   stepperHeaderStepThree.toggleClass("current-step");
   stepperHeaderStepFour.toggleClass("current-step");
@@ -126,43 +126,51 @@ function loadFormData() {
   return data;
 }
 
-function appendFormData(data) {
+function generateParaM0(text) {
+  return '<p class="mb-0">' + text + "</p>";
+}
+
+// function formatUserData(data) {
+//   var basicDetails = 
+// }
+
+function appendFormDataOld(data) {
   console.log(data);
-  // var billingDetails =
-  //   '<p class="mb-0">' +
-  //   data.billingData.firstName +
-  //   " " +
-  //   data.billingData.lastName +
-  //   '</p><p class="mb-0">' +
-  //   data.billingData.streetAddress +
-  //   '</p><p class="mb-0' +
-  //   (data.billingData.streetAddress2
-  //     ? '">' + data.billingData.streetAddress2
-  //     : ' d-none d-sm-block d-md-none d-lg-block">' + "<span>&nbsp</span>") +
-  //   '</p><p class="mb-0">' +
-  //   data.billingData.city +
-  //   ", " +
-  //   data.billingData.state +
-  //   '</p><p class="mb-0">' +
-  //   data.billingData.zip +
-  //   "</p>";
-  // var cardNumber = data.paymentData.cardNumber;
-  // var paymentDetails =
-  //   '<p class="mb-0">' +
-  //   data.paymentData.cardName +
-  //   '</p><p class="mb-0">' +
-  //   (cardNumber.length === 15
-  //     ? "**** ****** *" + cardNumber.slice(14)
-  //     : "**** **** **** " + cardNumber.slice(15)) +
-  //   '</p><p class="mb-0">' +
-  //   data.paymentData.expiration +
-  //   '</p><p class="mb-0">***</p>';
-  // $("#billing-details-confirm")
-  //   .empty()
-  //   .append(billingDetails);
-  // $("#payment-details-confirm")
-  //   .empty()
-  //   .append(paymentDetails);
+  var billingDetails =
+    '<p class="mb-0">' +
+    data.billingData.firstName +
+    " " +
+    data.billingData.lastName +
+    '</p><p class="mb-0">' +
+    data.billingData.streetAddress +
+    '</p><p class="mb-0' +
+    (data.billingData.streetAddress2
+      ? '">' + data.billingData.streetAddress2
+      : ' d-none d-sm-block d-md-none d-lg-block">' + "<span>&nbsp</span>") +
+    '</p><p class="mb-0">' +
+    data.billingData.city +
+    ", " +
+    data.billingData.state +
+    '</p><p class="mb-0">' +
+    data.billingData.zip +
+    "</p>";
+  var cardNumber = data.paymentData.cardNumber;
+  var paymentDetails =
+    '<p class="mb-0">' +
+    data.paymentData.cardName +
+    '</p><p class="mb-0">' +
+    (cardNumber.length === 15
+      ? "**** ****** *" + cardNumber.slice(14)
+      : "**** **** **** " + cardNumber.slice(15)) +
+    '</p><p class="mb-0">' +
+    data.paymentData.expiration +
+    '</p><p class="mb-0">***</p>';
+  $("#billing-details-confirm")
+    .empty()
+    .append(billingDetails);
+  $("#payment-details-confirm")
+    .empty()
+    .append(paymentDetails);
 }
 
 // Cleave input formatting

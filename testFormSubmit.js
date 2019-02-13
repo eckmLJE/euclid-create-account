@@ -1,0 +1,23 @@
+var testFormSubmit = {
+  altEmail: "hello@hello.com",
+  cellPhone: "973 868 4386",
+  companyName: "Euclid Technology",
+  country: "United States",
+  email: "lucas.eckman@gmail.com",
+  fax: "2029733306",
+  firstName: "Web Developer",
+  homePhone: "415 971 6630",
+  lastName: "Eckman",
+  mailingCity: "Washington",
+  mailingAddress: "1324 E St SE",
+  mailingAddress2: "105",
+  mailingState: "DC",
+  mailingZip: "20003",
+  password: "cabbage35",
+  passwordConfirm: "cabbage35",
+  prefix: "Home",
+  username: "eckm",
+  website: "www.lucaseckman.com",
+  workPhone: "202 642 6766",
+  workPhoneExt: "123"
+};
