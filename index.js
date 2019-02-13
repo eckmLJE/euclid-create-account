@@ -109,7 +109,7 @@ var passwordConfirmInput = document.querySelector("#password-confirm-input");
 
 passwordInput.addEventListener("change", validatePassword);
 passwordConfirmInput.addEventListener("keyup", validatePassword);
-passwordInput.addEventListener("blur", passwordBlueValidity);
+passwordInput.addEventListener("blur", passwordBlurValidity);
 passwordConfirmInput.addEventListener("blur", passwordMatchBlurValidity);
 
 function validatePassword() {
@@ -118,7 +118,7 @@ function validatePassword() {
     : passwordConfirmInput.setCustomValidity("");
 }
 
-function passwordBlueValidity() {
+function passwordBlurValidity() {
   passwordInput.checkValidity();
   passwordInput.parentElement.classList.add("was-validated");
 }
